@@ -9,6 +9,7 @@ import {
   child,
   update,
   remove,
+  push,
 } from "firebase/database"; // Update the import path
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -42,15 +43,26 @@ let SAME_EVENT = false;
 
 // Function to Insert data
 async function InsertData(numberOfEvent) {
-  set(ref(db, "GasSensorValues/" + numberOfEvent), {
-    mq2Value: 6,
-  })
-    .then(() => {
-      console.log("Data inserted succesfully");
-    })
-    .catch((error) => {
-      console.log("Error: ", error);
-    });
+  // data to be used
+  let data = {
+    mq2Value: 80,
+  };
+  // set function to insert data into realtime DB
+  // set(ref(db, "GasSensorValues/" + numberOfEvent), {
+  //   data,
+  // })
+  //   .then(() => {
+  //     console.log("Data inserted succesfully");
+  //   })
+  //   .catch((error) => {
+  //     console.log("Error: ", error);
+  //   });
+
+  // calling push function
+  for (let i = 0; i < 100; i++) {
+    push(ref(db, "GasSensorValues/" + numberOfEvent), data); // firebase push function
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Delay for 0.5 seconds
+  }
 }
 
 // Function to Update data
