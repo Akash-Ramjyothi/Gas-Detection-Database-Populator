@@ -43,10 +43,6 @@ let SAME_EVENT = false;
 
 // Function to Insert data
 async function InsertData(numberOfEvent) {
-  // data to be used
-  let data = {
-    mq2Value: 80,
-  };
   // set function to insert data into realtime DB
   // set(ref(db, "GasSensorValues/" + numberOfEvent), {
   //   data,
@@ -59,7 +55,12 @@ async function InsertData(numberOfEvent) {
   //   });
 
   // calling push function
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 5; i++) {
+    // data to be used
+    let data = {
+      mq2Value: i,
+    };
+
     push(ref(db, "GasSensorValues/" + numberOfEvent), data); // firebase push function
     await new Promise((resolve) => setTimeout(resolve, 500)); // Delay for 0.5 seconds
   }
