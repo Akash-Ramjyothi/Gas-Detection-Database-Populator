@@ -55,14 +55,14 @@ async function InsertData(numberOfEvent) {
   //   });
 
   // calling push function
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 25; i++) {
     // data to be used
     let data = {
       mq2Value: i,
     };
 
     push(ref(db, "GasSensorValues/" + numberOfEvent), data); // firebase push function
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Delay for 0.5 seconds
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Delay for 0.5 seconds
   }
 }
 
