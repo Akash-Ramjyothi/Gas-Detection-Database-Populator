@@ -43,17 +43,6 @@ let SAME_EVENT = false;
 
 // Function to Insert data
 async function InsertData(numberOfEvent) {
-  // set function to insert data into realtime DB
-  // set(ref(db, "GasSensorValues/" + numberOfEvent), {
-  //   data,
-  // })
-  //   .then(() => {
-  //     console.log("Data inserted succesfully");
-  //   })
-  //   .catch((error) => {
-  //     console.log("Error: ", error);
-  //   });
-
   // calling push function
   for (let i = 0; i < 25; i++) {
     // data to be used
